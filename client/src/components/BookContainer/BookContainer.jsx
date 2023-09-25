@@ -1,5 +1,5 @@
 export default function BookContainer() {
-    return (
+	return (
 		<div className='lws-bookContainer'>
 			{/* <!-- Card 1 --> */}
 			<div className='book-card'>
@@ -47,7 +47,7 @@ export default function BookContainer() {
 
 					<div className='space-y-2 mt-4 h-full'>
 						<h4 className='lws-bookName'>
-							Life Hurts: A Doctor's Personal Journey Through
+							Life Hurts: A Doctor&#39;s Personal Journey Through
 							Anorexia
 						</h4>
 						<p className='lws-author'>Dr Elizabeth McNaught</p>
