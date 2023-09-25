@@ -26,15 +26,6 @@
       "rating": 4,
       "featured": true,
       "id": 3
-    },
-    {
-      "name": "React In Action",
-      "author": "Mark Thomas",
-      "thumbnail": "https://books.google.com.bd/books/publisher/content?id=2TgzEAAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE71v_xt2D3Jo_IX5KJjC7kdHJ9nhJpwFC5i2oF6ka6GjzGa5lj7sQoHX3qXySIOAPa6yyflH3uROd8rfixwaV1wtFBrj4Qkh287CarFpO-9SG0B5lLH0yQ7hkYUZ8TiXcJ1Zye0u",
-      "price": "45",
-      "rating": "4",
-      "featured": false,
-      "id": 4
     }
   ]
 }

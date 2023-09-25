@@ -1,6 +1,15 @@
+import { useDispatch } from 'react-redux';
+import deleteBook from '../../redux/books/thunk/deleteBook';
+
 export default function Book({ book }) {
 	// ! Required variables
+	const dispatch = useDispatch();
 	const { id, name, author, thumbnail, price, rating, featured } = book;
+
+	// Handle delete book
+	const handleDeleteBook = () => {
+		dispatch(deleteBook(id));
+	};
 
 	return (
 		<div className='book-card'>
@@ -19,6 +28,7 @@ export default function Book({ book }) {
 						)}
 					</span>
 					<div className='text-gray-500 space-x-2'>
+						{/* Edit */}
 						<button className='lws-edit'>
 							<svg
 								fill='none'
@@ -33,7 +43,10 @@ export default function Book({ book }) {
 								/>
 							</svg>
 						</button>
-						<button className='lws-delete'>
+						{/* Delete */}
+						<button
+							className='lws-delete'
+							onClick={handleDeleteBook}>
 							<svg
 								fill='none'
 								viewBox='0 0 24 24'
