@@ -1,4 +1,4 @@
-import { ADDED, DELETED, EDITED } from './actions';
+import { ADDED, DELETED, EDITED, LOADED } from './actions';
 
 // initial state
 const initialState = [];
@@ -9,6 +9,9 @@ const newId = (state) =>
 
 export default function booksReducer(state = initialState, action) {
 	switch (action.type) {
+		case LOADED:
+			return action.payload;
+
 		case ADDED:
 			return [
 				...state,

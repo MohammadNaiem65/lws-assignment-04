@@ -1,4 +1,11 @@
-import { ADDED, DELETED, EDITED } from './actions';
+import { ADDED, DELETED, EDITED, LOADED } from './actions';
+
+export const loaded = (books) => {
+	return {
+		type: LOADED,
+		payload: books,
+	};
+};
 
 export const added = (bookDetails) => {
 	return {
