@@ -1,11 +1,40 @@
+import { useDispatch } from 'react-redux';
+import addBook from '../../redux/books/thunk/addBook';
+
 export default function AddBookForm() {
-    return (
+	// ! Required hooks, functions and variables
+	const dispatch = useDispatch();
+
+	const handleAddBook = (e) => {
+		e.preventDefault();
+		const form = e.target;
+
+		const name = form.name.value;
+		const author = form.author.value;
+		const thumbnail = form.thumbnail.value;
+		const price = form.price.value;
+		const rating = form.rating.value;
+		const featured = form.featured.checked;
+
+		const bookDetails = {
+			name,
+			author,
+			thumbnail,
+			price,
+			rating,
+			featured,
+		};
+
+		dispatch(addBook(bookDetails));
+	};
+
+	return (
 		<div>
 			<div className='p-4 overflow-hidden bg-white shadow-cardShadow rounded-md'>
 				<h4 className='mb-8 text-xl font-bold text-center'>
 					Add New Book
 				</h4>
-				<form className='book-form'>
+				<form className='book-form' onSubmit={handleAddBook}>
 					<div className='space-y-2'>
 						<label htmlFor='name'>Book Name</label>
 						<input
@@ -78,7 +107,10 @@ export default function AddBookForm() {
 						</label>
 					</div>
 
-					<button type='submit' className='submit' id='submit'>
+					<button
+						type='submit'
+						className='submit bg-[#5850EC] border-2 hover:bg-transparent hover:text-[#5850EC] hover:font-semibold hover:border-[#5850EC]'
+						id='submit'>
 						Add Book
 					</button>
 				</form>

@@ -11,11 +11,13 @@ export default function Book({ book }) {
 			/>
 			<div className='flex-1 h-full pr-2 pt-2 flex flex-col'>
 				<div className='flex items-center justify-between'>
-					{featured && (
-						<span className='badge-success lws-Badge'>
-							featured
-						</span>
-					)}
+					<span>
+						{featured && (
+							<span className='badge-success lws-Badge'>
+								Featured
+							</span>
+						)}
+					</span>
 					<div className='text-gray-500 space-x-2'>
 						<button className='lws-edit'>
 							<svg

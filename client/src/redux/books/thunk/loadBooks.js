@@ -1,4 +1,4 @@
-import { loaded } from '../books/actionCreators';
+import { loaded } from '../actionCreators';
 
 export default async function loadBooks(dispatch, getState) {
 	const res = await fetch('http://localhost:9000/books');

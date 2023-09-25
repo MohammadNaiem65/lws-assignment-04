@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import Book from '../Book/Book';
 import { useEffect } from 'react';
-import loadBooks from '../../redux/thunk/loadBooks';
+import loadBooks from '../../redux/books/thunk/loadBooks';
 
 export default function BookContainer({ showAllBooks, searchedBook }) {
 	// ! Required hooks and variables

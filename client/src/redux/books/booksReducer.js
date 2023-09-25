@@ -3,10 +3,6 @@ import { ADDED, DELETED, EDITED, LOADED } from './actions';
 // initial state
 const initialState = [];
 
-// generate new id
-const newId = (state) =>
-	state.reduce((maxId, curr) => Math.max(maxId, curr.id), 1) + 1;
-
 export default function booksReducer(state = initialState, action) {
 	switch (action.type) {
 		case LOADED:
@@ -16,7 +12,6 @@ export default function booksReducer(state = initialState, action) {
 			return [
 				...state,
 				{
-					id: newId(state),
 					...action.payload,
 				},
 			];
