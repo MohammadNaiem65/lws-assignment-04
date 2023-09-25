@@ -3,7 +3,7 @@ import Book from '../Book/Book';
 import { useEffect } from 'react';
 import loadBooks from '../../redux/thunk/loadBooks';
 
-export default function BookContainer() {
+export default function BookContainer({ showAllBooks }) {
 	// ! Required hooks and variables
 	const books = useSelector((state) => state);
 	const dispatch = useDispatch();
@@ -16,9 +16,11 @@ export default function BookContainer() {
 	return (
 		<div className='lws-bookContainer'>
 			{/* <!-- Book Cards  --> */}
-			{books.map((book) => (
-				<Book key={book.id} book={book} />
-			))}
+			{showAllBooks && books
+				? books.map((book) => <Book key={book.id} book={book} />)
+				: books
+						.filter((book) => book.featured !== showAllBooks)
+						.map((book) => <Book key={book.id} book={book} />)}
 		</div>
 	);
 }
