@@ -1,6 +1,20 @@
+import { useEffect, useState } from 'react';
 import logo from './../../assets/logo.svg';
 
-export default function Navbar() {
+export default function Navbar({ setSearchedBook }) {
+	// ! Required hooks, functions and variables
+	const [query, setQuery] = useState('');
+
+	const handleSearchingBook = (e) => {
+		e.preventDefault();
+
+		setSearchedBook(query);
+	};
+
+	useEffect(() => {
+		setSearchedBook(query);
+	}, [query]);
+
 	return (
 		<nav className='py-4 2xl:px-6'>
 			<div className='container flex items-center justify-between'>
@@ -12,7 +26,9 @@ export default function Navbar() {
 					<li className='cursor-pointer'>My Collection</li>
 				</ul>
 
-				<form className='flex items-center'>
+				<form
+					className='flex items-center'
+					onSubmit={handleSearchingBook}>
 					<div className='group relative rounded-md bg-white'>
 						<svg
 							width='20'
@@ -26,9 +42,11 @@ export default function Navbar() {
 						</svg>
 						<input
 							type='text'
+							name='query'
 							placeholder='Filter books...'
 							className='search'
 							id='lws-searchBook'
+							onChange={(e) => setQuery(e.target.value)}
 						/>
 					</div>
 				</form>
