@@ -9,6 +9,7 @@ function App() {
 	// ! Required hooks and variables
 	const [showAllBooks, setShowAllBooks] = useState(true);
 	const [searchedBook, setSearchedBook] = useState('');
+	const [defaultValue, setDefaultValue] = useState({})
 
 	return (
 		<div className='bg-gray-300'>
@@ -29,11 +30,15 @@ function App() {
 						<BookContainer
 							showAllBooks={showAllBooks}
 							searchedBook={searchedBook}
+							setDefaultValue={setDefaultValue}
 						/>
 					</div>
 
 					{/* Add book form */}
-					<AddBookForm />
+					<AddBookForm
+						defaultValue={defaultValue}
+						setDefaultValue={setDefaultValue}
+					/>
 				</div>
 			</main>
 		</div>

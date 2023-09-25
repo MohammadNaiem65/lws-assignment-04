@@ -1,40 +1,71 @@
 import { useDispatch } from 'react-redux';
 import addBook from '../../redux/books/thunk/addBook';
+import editBook from '../../redux/books/thunk/editBook';
 
-export default function AddBookForm() {
+export default function AddBookForm({ defaultValue, setDefaultValue }) {
 	// ! Required hooks, functions and variables
 	const dispatch = useDispatch();
+	const { name, author, thumbnail, price, rating, featured, id } =
+		defaultValue;
 
 	const handleAddBook = (e) => {
 		e.preventDefault();
 		const form = e.target;
 
-		const name = form.name.value;
-		const author = form.author.value;
-		const thumbnail = form.thumbnail.value;
-		const price = form.price.value;
-		const rating = form.rating.value;
-		const featured = form.featured.checked;
+		const bookName = form.name.value;
+		const bookAuthor = form.author.value;
+		const bookThumbnail = form.thumbnail.value;
+		const bookPrice = form.price.value;
+		const bookRating = form.rating.value;
+		const bookFeatured = form.featured.checked;
 
 		const bookDetails = {
-			name,
-			author,
-			thumbnail,
-			price,
-			rating,
-			featured,
+			name: bookName,
+			author: bookAuthor,
+			thumbnail: bookThumbnail,
+			price: bookPrice,
+			rating: bookRating,
+			featured: bookFeatured,
 		};
 
 		dispatch(addBook(bookDetails));
+		form.reset();
+	};
+
+	const handleEditBook = (e) => {
+		e.preventDefault();
+		const form = e.target;
+
+		const bookName = form.name.value;
+		const bookAuthor = form.author.value;
+		const bookThumbnail = form.thumbnail.value;
+		const bookPrice = form.price.value;
+		const bookRating = form.rating.value;
+		const bookFeatured = form.featured.checked;
+
+		const bookDetails = {
+			name: bookName,
+			author: bookAuthor,
+			thumbnail: bookThumbnail,
+			price: bookPrice,
+			rating: bookRating,
+			featured: bookFeatured,
+		};
+
+		dispatch(editBook(bookDetails, id));
+		form.reset();
+		setDefaultValue({});
 	};
 
 	return (
 		<div>
 			<div className='p-4 overflow-hidden bg-white shadow-cardShadow rounded-md'>
 				<h4 className='mb-8 text-xl font-bold text-center'>
-					Add New Book
+					{name ? 'Edit A Book' : 'Add New Book'}
 				</h4>
-				<form className='book-form' onSubmit={handleAddBook}>
+				<form
+					className='book-form'
+					onSubmit={name ? handleEditBook : handleAddBook}>
 					<div className='space-y-2'>
 						<label htmlFor='name'>Book Name</label>
 						<input
@@ -43,6 +74,7 @@ export default function AddBookForm() {
 							type='text'
 							id='input-Bookname'
 							name='name'
+							defaultValue={name && name}
 						/>
 					</div>
 
@@ -54,6 +86,7 @@ export default function AddBookForm() {
 							type='text'
 							id='input-Bookauthor'
 							name='author'
+							defaultValue={author && author}
 						/>
 					</div>
 
@@ -65,6 +98,7 @@ export default function AddBookForm() {
 							type='text'
 							id='input-Bookthumbnail'
 							name='thumbnail'
+							defaultValue={thumbnail && thumbnail}
 						/>
 					</div>
 
@@ -77,6 +111,7 @@ export default function AddBookForm() {
 								type='number'
 								id='input-Bookprice'
 								name='price'
+								defaultValue={price && price}
 							/>
 						</div>
 
@@ -90,6 +125,7 @@ export default function AddBookForm() {
 								name='rating'
 								min='1'
 								max='5'
+								defaultValue={rating && rating}
 							/>
 						</div>
 					</div>
@@ -100,6 +136,7 @@ export default function AddBookForm() {
 							type='checkbox'
 							name='featured'
 							className='w-4 h-4'
+							checked={featured && featured}
 						/>
 						<label htmlFor='featured' className='ml-2 text-sm'>
 							{' '}
@@ -111,7 +148,7 @@ export default function AddBookForm() {
 						type='submit'
 						className='submit bg-[#5850EC] border-2 hover:bg-transparent hover:text-[#5850EC] hover:font-semibold hover:border-[#5850EC]'
 						id='submit'>
-						Add Book
+						{name ? 'Edit Book' : 'Add Book'}
 					</button>
 				</form>
 			</div>
